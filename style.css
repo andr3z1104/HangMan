@@ -1,24 +1,77 @@
 body{
-    /*background-image: linear-gradient(to right, rgba(255,0,0,0),rgba(255,0,0,1));
-    */
     background-color: beige;
 }
 
 header{
     display: flex;
-    flex-direction: row;
-    -ms-flex-align-items: center;
     justify-content: center;
-}
-
-main{
-    display: flex;
-    flex-direction: row;
-    -ms-flex-item-align: center;
-    justify-content: center;
-}
-
-#button_new_Game{
     margin: auto;
-    justify-content:center;
+}
+
+.parent_superior{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    margin: auto;
+    width: 80vh;
+    height: 5vh;
+    /*border: 1px solid orange;*/
+}
+
+#titulo{
+    height: inherit;
+    width: 60vh; 
+    border: 1px solid orange;
+    text-align: left;
+    align-items: center;
+    border-radius: 5vh 0 0 0 ;
+    background-color: azure;
+}
+
+#records{
+    height: inherit;
+    width: 20vh;
+    border: 1px solid orange;
+    text-align: right;
+    border-radius: 0 5vh 0 0;
+    background-color: azure;
+}
+
+
+.parent_main{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: left;
+    margin: auto;
+    /*border: 1px solid orange;*/
+    height: 60vh;
+    width: 80vh;
+}
+
+.child_main{
+    border: 1px solid red;
+    height: inherit;
+    width: 60vh;
+    border-radius: 0 0 0 5vh;
+    background-color: lavender;
+}
+
+.canvas{
+    border: 1px solid black;
+    width: 40vh;
+    height: 40vh;
+    margin-left: 9vh;
+}
+
+#button_new_game{
+    margin-top: 23vh;
+    margin-left: 24vh;
+    position: absolute;
+}
+
+.nav_main{
+    border: 1px solid pink;
+    height: inherit;
+    width: 20vh;
+    border-radius: 0 0 5vh 0;
+    background-color: floralwhite;
 }
