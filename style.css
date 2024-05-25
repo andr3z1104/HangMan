@@ -25,6 +25,7 @@ header{
     align-items: center;
     border-radius: 5vh 0 0 0 ;
     background-color: azure;
+    padding-left: 1vh;
 }
 
 #records{
@@ -34,6 +35,7 @@ header{
     text-align: right;
     border-radius: 0 5vh 0 0;
     background-color: azure;
+    padding-right: 1vh;
 }
 
 
@@ -50,9 +52,10 @@ header{
 .child_main{
     border: 1px solid red;
     height: inherit;
-    width: 60vh;
+    width: 61.1vh;
     border-radius: 0 0 0 5vh;
     background-color: lavender;
+    justify-content: center;
 }
 
 .canvas{
@@ -62,37 +65,53 @@ header{
     margin-left: 9vh;
 }
 
-#button_new_game{
-    margin-top: 23vh;
-    margin-left: 24vh;
-    position: absolute;
+#boton_juego_nuevo{
+    width: auto;
+    
 }
 
+#container_palabra_secreta{
+    width: auto;
+    height: 3vh;
+    margin: auto;
+    margin-top: 15vh;
+    text-align: center;
+}
+
+
 #palabra_secreta span{
-    vertical-align: bottom;
     font-size: 2em;
     border-bottom: 4px solid #000;
-    width: 25px;
-    margin-right: 8px;
+    width: 30px;
     text-align: center;
+    margin-right: 6px;
     display: inline-block;
 }
 
 .nav_main{
     border: 1px solid pink;
     height: inherit;
-    width: 20vh;
+    width: 20.9vh;
     border-radius: 0 0 5vh 0;
     background-color: floralwhite;
 }
 
 #botones_letras{
     padding: 8px 16px;
-    font-family: "Space Mono",monospace;
     display: flex;
     flex-wrap: wrap;
-    gap: 5px;
-    border-radius: 5px;
+    justify-content: center;
+    margin: auto;
+    gap: 13px;
+    border-radius: 1vh;
     background: linear-gradient(to bottom, #330779, #c510fc);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 50vh;
+}
+
+#botones_letras button{
+    font-size: xx-large;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    width: 5vh;
 }

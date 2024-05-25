@@ -13,7 +13,6 @@
     <br>
     
     <div class="parent_superior">
-
         <div id="titulo">
             <h2> HangMan</h2>
         </div>
@@ -28,14 +27,11 @@
     <div class="parent_main">
         <div class="child_main">
             <canvas id="canvas"></canvas>
+            <button id="boton_juego_nuevo" onclick=""> New Game </button>
 
-            <div>
+            <div id="container_palabra_secreta">
                 <p id="palabra_secreta">
-                    <span>A</span> <span>B</span> <span>C</span>
                 </p>
-
-                <button id="boton_juego_nuevo" onclick="ocultarBoton()"> New Game </button>
-
             </div>
 
             <div id="botones_letras">
@@ -70,18 +66,19 @@
 
             </div>
             <!--<div id="contenerdor-letras"></div>
-            <div id="input_usuario"></div>
-            <div id="timer"></div>
-            <div id="opciones_juegos"></div>
-            <div id="resultado_final"></div>
+                <div id="input_usuario"></div>
+                <div id="timer"></div>
+                <div id="opciones_juegos"></div>
+                <div id="resultado_final"></div>
+            </div> -->
         </div>
         <div class="nav_main">
             <div class="user">
                 <div id="name"></div>
                 <div id="time"></div>
-            </div>-->
+            </div>
         </div>
-    </div>
+        </div>
     <br>
     <script src="script.js"></script>
 </body>
