@@ -75,3 +75,10 @@ header{
     border-radius: 0 0 5vh 0;
     background-color: floralwhite;
 }
+
+.botones_letras{
+    padding: 8px 16px;
+    border-radius: 5px;
+    background: linear-gradient(to bottom, #330779, #c510fc);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
