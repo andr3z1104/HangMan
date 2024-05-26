@@ -6,6 +6,7 @@ boton_juego_nuevo.addEventListener('click', () =>{
 let num_errores = 0;
 let num_aciertos = 0;
 let puntaje = 0;
+let palabra_acertada = 0; //recordarrrrrrr
 let palabra;
 
 
@@ -58,8 +59,10 @@ function NewGame(event){
   puntaje = 0
   num_errores = 0;
   num_aciertos = 0;
+  palabra_acertada = 0;
   ocultarBoton();
   cambiar_valor_puntos();
+  palabras_acertadas();
 
   const len_palabras = palabras.length;
   const valor_palabra = palabraRandom(len_palabras);
@@ -210,9 +213,9 @@ function click_letras(event){
     agregarUsuario();
     jugar_de_nuevo();
   }else if(num_aciertos == palabra_comprueba.length){
-    alert('Ganaste! el personaje sobrevivio al ahorcamiento. ');
-    agregarUsuario();
-    jugar_de_nuevo();
+    alert('Ganaste! el personaje sobrevivio al ahorcamiento. --> Siguiente nivel ');
+    palabra_acertada++;
+    nextlevel();
   }
 
   console.log( 'la letra' + letra + "palabra" + palabra_comprueba + "existe?" + acerto );
@@ -238,7 +241,7 @@ function agregarUsuario() {
   if (nuevoUsuario) {
       const lista = document.getElementById("lista_usuarios");
       const nuevoElemento = document.createElement("li");
-      nuevoElemento.textContent = nuevoUsuario;
+      nuevoElemento.textContent = nuevoUsuario + ' --> ' + puntaje + " puntos";
       lista.appendChild(nuevoElemento);
   }
 }
@@ -247,3 +250,53 @@ function cambiar_valor_puntos() {
   const nuevo_record = document.getElementById('record_actual');
   nuevo_record.innerText = puntaje;
 }
+
+function palabras_acertadas() {
+  const numero_palabras_acertadas = document.getElementById('intentos');
+  numero_palabras_acertadas.innerText = palabra_acertada;
+}//recordarrrrrrrrrrrr
+
+
+
+function nextlevel(){
+  const adivinar = document.getElementById("palabra_secreta");
+  adivinar.innerHTML= '';
+  num_aciertos = 0;
+  cambiar_valor_puntos();//cuidadoooooooo
+  palabras_acertadas();//aaaa
+
+  const len_palabras = palabras.length;
+  const valor_palabra = palabraRandom(len_palabras);
+  palabra = palabras[valor_palabra];
+  const len_palabra = palabra.length;
+
+  for ( let i = 0; i < btn_letras.length ; i++){
+    btn_letras[i].disabled = false;
+  
+  }//abilitar otra vez las letras despues de otro juego
+
+
+  console.log(palabra);
+
+  for( let i =0; i < len_palabra; i++ ){
+    const raya = document.createElement('span');
+    adivinar.appendChild(raya);
+  }
+
+}
+
+
+
+var timerInterval;
+
+function startTimer() {
+  timerInterval = setInterval(updateTimer, 1000); // Actualiza el temporizador cada segundo
+}
+
+function updateTimer() {
+  var currentTime = Date.now();
+  var elapsedTime = Math.floor((currentTime - startTime) / 1000); // Calcula el tiempo transcurrido en segundos
+  console.log("Tiempo transcurrido: " + elapsedTime + " segundos");
+}
+
+startTimer(); // Inicia el temporizador
