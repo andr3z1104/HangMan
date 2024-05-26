@@ -8,7 +8,7 @@ let num_aciertos = 0;
 let palabra;
 
 
-const palabras = ['manzana', 'pera', 'banana', 'naranja', 'uva', 'sandía', 'kiwi', 'mango', 'fresa', 'piña'];
+const palabras = ['manzana', 'pera', 'banana', 'naranja', 'uva', 'sandia', 'kiwi', 'mango', 'fresa', 'piña'];
 
 const canvas = document.getElementById('canvas');
 const canva = canvas.getContext('2d');
@@ -183,6 +183,10 @@ function click_letras(event){
         canva.lineWidth = 2
         canva.stroke();
 
+        canva.font = 'bold 20px Arial';
+        canva.fillText('x', canvas.width/2, canvas.height/2-26.5);
+        canva.fillText('x', canvas.width/2-13, canvas.height/2-26.5);
+
         break;
     }
 
@@ -191,12 +195,6 @@ function click_letras(event){
 
   if(num_errores == 8){
     alert('Perdiste porque el personaje fue ahorcado! La palabra era-->' + palabra_comprueba);
-    
-    canva.font = 'bold 30px Arial';
-    canva.fillText('x', canvas.width/2, canvas.height/4);
-    canva.fillText('x', canvas.width/3, canvas.height/4);
-    
-    
     jugar_de_nuevo();
   }else if(num_aciertos == palabra_comprueba.length){
     alert('Ganaste! el personaje sobrevivio al ahorcamiento. ');
@@ -212,4 +210,11 @@ function jugar_de_nuevo(){
   }
   mostrarBoton();
   
+}
+
+window.onload = function(){
+  for ( let i = 0; i < btn_letras.length ; i++){
+    btn_letras[i].disabled = true;
+  }
+
 }
