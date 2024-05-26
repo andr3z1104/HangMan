@@ -58,11 +58,12 @@ header{
     justify-content: center;
 }
 
-.canvas{
+#canvas{
     border: 1px solid black;
     width: 40vh;
-    height: 40vh;
-    margin-left: 9vh;
+    height: 30vh;
+    margin: auto;
+    margin-left: 10vh;
 }
 
 #boton_juego_nuevo{
@@ -74,7 +75,7 @@ header{
     width: auto;
     height: 3vh;
     margin: auto;
-    margin-top: 15vh;
+    margin-top: 2vh;
     text-align: center;
 }
 

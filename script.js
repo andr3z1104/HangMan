@@ -1,4 +1,8 @@
-boton_juego_nuevo.addEventListener('click', NewGame);
+boton_juego_nuevo.addEventListener('click', () =>{
+  NewGame();
+  limpiarCanva();
+});
+
 let num_errores = 0;
 let num_aciertos = 0;
 let palabra;
@@ -6,12 +10,21 @@ let palabra;
 
 const palabras = ['manzana', 'pera', 'banana', 'naranja', 'uva', 'sandía', 'kiwi', 'mango', 'fresa', 'piña'];
 
+const canvas = document.getElementById('canvas');
+const canva = canvas.getContext('2d');
+canva.clearRect(0,0, canvas.width, canvas.height);
+
+
+function limpiarCanva(){
+  canva.clearRect(0,0, canvas.width, canvas.height);
+  return canva;
+}
+
 
 function palabraRandom(len){
   const valor_palabra = Math.floor(Math.random() * len);
   return valor_palabra;
 }
-
 
 
 function ocultarBoton() {
@@ -91,10 +104,86 @@ function click_letras(event){
 
   if(acerto == false){
     num_errores++;
-    //aqui van las imagenes con el canvas 50
+    ahorcado_trazo(num_errores);
   }
 
-  if(num_errores == 5){
+  function ahorcado_trazo(num_errores){
+    
+    switch(num_errores){
+      case 1:
+        //base
+        canva.beginPath();
+        canva.moveTo(20, canvas.height -10);
+        canva.lineTo(canvas.width - 20, canvas.height -10);
+        canva.lineWidth = 5
+        canva.stroke();
+        break;
+      case 2:
+        //palo vertical
+        canva.beginPath();
+        canva.moveTo( 20, canvas.height -10);
+        canva.lineTo( canvas.width-280, 10);
+        canva.lineWidth = 5
+        canva.stroke();
+        break;
+      case 3:
+        //palo horizontal
+        canva.beginPath();
+        canva.moveTo(18, 10);
+        canva.lineTo(canvas.width / 2, 10);
+        canva.lineWidth = 5
+        canva.stroke();
+        break;
+      case 4:
+        //cuerda
+        canva.beginPath();
+        canva.moveTo(canvas.width /2, 10);
+        canva.lineTo(canvas.width /2, 30);
+        canva.lineWidth = 5
+        canva.stroke();
+        break;
+      case 5:
+        //cabeza
+        canva.beginPath();
+        //https://www.w3schools.com/html/html5_canvas.asp
+        canva.arc(canvas.width /2, 50, 20, 0, Math.PI *2);
+        canva.lineWidth = 5
+        canva.stroke();
+        break;
+      case 6:
+        //cuerpo
+        canva.beginPath();
+        canva.moveTo(canvas.width /2, 70);
+        canva.lineTo(canvas.width /2, 110);
+        canva.lineWidth = 5
+        canva.stroke();
+        break;
+      case 7:
+        //brazos
+        canva.beginPath();
+        canva.moveTo(canvas.width /2, 80);
+        canva.lineTo(canvas.width /2 -20, 100);
+        canva.moveTo(canvas.width /2, 80);
+        canva.lineTo(canvas.width /2 +20, 100);
+        canva.lineWidth = 5
+        canva.stroke();
+        break;
+      case 8:
+        //piernas
+        canva.beginPath();
+        canva.moveTo(canvas.width /2, 110);
+        canva.lineTo(canvas.width /2 -20, 130);
+        canva.moveTo(canvas.width /2, 110);
+        canva.lineTo(canvas.width /2 +20, 130);
+        canva.lineWidth = 5
+        canva.stroke();
+        break;
+    }
+
+  }
+
+
+  if(num_errores == 8){
     alert('Perdiste porque el personaje fue ahorcado! La palabra era-->' + palabra_comprueba);
     jugar_de_nuevo();
   }else if(num_aciertos == palabra_comprueba.length){
@@ -108,7 +197,7 @@ function click_letras(event){
 function jugar_de_nuevo(){
   for ( let i = 0; i < btn_letras.length ; i++){
     btn_letras[i].disabled = true;
-  
   }
   mostrarBoton();
+  
 }
