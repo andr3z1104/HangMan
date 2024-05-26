@@ -177,6 +177,12 @@ function click_letras(event){
         canva.lineTo(canvas.width /2 +20, 130);
         canva.lineWidth = 5
         canva.stroke();
+
+        canva.beginPath();
+        canva.arc(canvas.width /2, 60, 10, 0, Math.PI, true);
+        canva.lineWidth = 2
+        canva.stroke();
+
         break;
     }
 
@@ -185,6 +191,12 @@ function click_letras(event){
 
   if(num_errores == 8){
     alert('Perdiste porque el personaje fue ahorcado! La palabra era-->' + palabra_comprueba);
+    
+    canva.font = 'bold 30px Arial';
+    canva.fillText('x', canvas.width/2, canvas.height/4);
+    canva.fillText('x', canvas.width/3, canvas.height/4);
+    
+    
     jugar_de_nuevo();
   }else if(num_aciertos == palabra_comprueba.length){
     alert('Ganaste! el personaje sobrevivio al ahorcamiento. ');
