@@ -13,45 +13,90 @@
     <br>
     
     <div class="parent_superior">
-
-        <div id="titulo">
-            <h2> HangMan</h2>
+        <div id="timer">
+            
+            <div id="timer_block">
+                <h2> </h2> 
+            </div>
+           
+            <div id="intentos">
+                <h2> </h2>
+            </div>
+            <div id="record_actual">
+                <h2> </h2>
         </div>
         
+        </div>
         <div id="records">
-            <h2> Records</h2>
+            <div id="records_block">
+                <h2> Records</h2>
+            </div>
         </div>
 
     </div>
 
 
     <div class="parent_main">
-
         <div class="child_main">
-            <button id="button_new_game" onclick="ocultarBoton()"> New Game </button>
-            <canvas class="canvas"></canvas>
-            <div id="letras"></div>
-            <div id="input"></div>
-            <div id="opciones"></div>
-            <div id="timer"></div>
-            <div id="tries"></div>
+            <button id="boton_juego_nuevo" onclick=""> NEW GAME </button>
+            <canvas id="canvas"></canvas>
             
-        </div>
-
-        <div class="nav_main">
-
-            <div class="user">
-
-                <div id="name"></div>
-                <div id="time"></div>
-
+            <div id="container_palabra_secreta">
+                <p id="palabra_secreta">
+                </p>
             </div>
 
+            <div id="botones_letras">
+
+                <button>A</button>
+                <button>B</button>
+                <button>C</button>
+                <button>D</button>
+                <button>E</button>
+                <button>F</button>
+                <button>G</button>
+                <button>H</button>
+                <button>I</button>
+                <button>J</button>
+                <button>K</button>
+                <button>L</button>
+                <button>M</button>
+                <button>N</button>
+                <button>Ñ</button>
+                <button>O</button>
+                <button>P</button>
+                <button>Q</button>
+                <button>R</button>
+                <button>S</button>
+                <button>T</button>
+                <button>U</button>
+                <button>V</button>
+                <button>W</button>
+                <button>X</button>
+                <button>Y</button>
+                <button>Z</button>
+
+            </div>
+            <!--<div id="contenerdor-letras"></div>
+                <div id="input_usuario"></div>
+                
+                <div id="opciones_juegos"></div>
+                <div id="resultado_final"></div>
+            </div> -->
         </div>
-
-    </div>
-
-
+        <div class="nav_main">
+            <div class="user">
+                <div id="name"></div>
+                <div id="time"></div>
+            </div>
+            <ul id="lista_usuarios">
+            </ul>
+        </div>
+        </div>
+    
+        <div class="fondo"></div>
+        <div class="fondo2"></div>
+        <div class="fondo3"></div>
     <br>
     <script src="script.js"></script>
 </body>

@@ -1,5 +1,5 @@
 body{
-    background-color: beige;
+    background-color: rgb(160, 112, 212);
 }
 
 header{
@@ -8,32 +8,139 @@ header{
     margin: auto;
 }
 
+    h1 {
+        color: hsla(0, 0%, 0%, .9);
+        font: normal 140px Varela Round, sans-serif;
+        height: 140px;
+        left: 0;
+        letter-spacing: 5px;
+        margin: -80px 0 0 0;
+        text-align: center;
+        text-transform: uppercase;
+        top: 50%;
+        width: 100%;
+        animation: move linear 2000ms infinite; 
+        margin-top: auto; 
+      }
+      
+      @keyframes move {
+        0% {
+          text-shadow:
+            4px -4px 0 rgb(255, 0, 204), 
+            3px -3px 0 rgb(255, 0, 204), 
+            2px -2px 0 rgb(255, 0, 204), 
+            1px -1px 0 rgb(255, 0, 204),
+            -4px 4px 0 hsla(180, 100%, 50%, 1), 
+            -3px 3px 0 hsla(180, 100%, 50%, 1), 
+            -2px 2px 0 hsla(180, 100%, 50%, 1), 
+            -1px 1px 0 hsla(180, 100%, 50%, 1)
+          ;
+        }
+        25% {    
+          text-shadow:      
+            -4px -4px 0 hsla(180, 100%, 50%, 1), 
+            -3px -3px 0 hsla(180, 100%, 50%, 1), 
+            -2px -2px 0 hsla(180, 100%, 50%, 1), 
+            -1px -1px 0 hsla(180, 100%, 50%, 1),
+            4px 4px 0 rgb(255, 0, 204), 
+            3px 3px 0 rgb(255, 0, 204), 
+            2px 2px 0 rgb(255, 0, 204), 
+            1px 1px 0 rgb(255, 0, 204)      
+          ;
+        }
+        50% {
+          text-shadow:
+            -4px 4px 0 rgb(255, 0, 204), 
+            -3px 3px 0 rgb(255, 0, 204), 
+            -2px 2px 0 rgb(255, 0, 204), 
+            -1px 1px 0 rgb(255, 0, 204),
+            4px -4px 0 hsla(180, 100%, 50%, 1), 
+            3px -3px 0 hsla(180, 100%, 50%, 1), 
+            2px -2px 0 hsla(180, 100%, 50%, 1), 
+            1px -1px 0 hsla(180, 100%, 50%, 1)
+          ;
+        }
+        75% {
+          text-shadow:
+            4px 4px 0 hsla(180, 100%, 50%, 1), 
+            3px 3px 0 hsla(180, 100%, 50%, 1), 
+            2px 2px 0 hsla(180, 100%, 50%, 1), 
+            1px 1px 0 hsla(180, 100%, 50%, 1),
+            -4px -4px 0 rgb(255, 0, 204), 
+            -3px -3px 0 rgb(255, 0, 204), 
+            -2px -2px 0 rgb(255, 0, 204), 
+            -1px -1px 0 rgb(255, 0, 204)      
+          ;
+        }
+        100% {
+          text-shadow:
+            4px -4px 0 rgb(255, 0, 204), 
+            3px -3px 0 rgb(255, 0, 204), 
+            2px -2px 0 rgb(255, 0, 204), 
+            1px -1px 0 rgb(255, 0, 204),
+            -4px 4px 0 hsla(180, 100%, 50%, 1), 
+            -3px 3px 0 hsla(180, 100%, 50%, 1), 
+            -2px 2px 0 hsla(180, 100%, 50%, 1), 
+            -1px 1px 0 hsla(180, 100%, 50%, 1)
+          ;
+        }  
+      }
+
+
 .parent_superior{
     display: grid;
     grid-template-columns: auto auto auto;
     margin: auto;
     width: 80vh;
-    height: 5vh;
-    /*border: 1px solid orange;*/
+    height: 10vh;
 }
 
-#titulo{
+#timer{
+    display: grid;
     height: inherit;
+    grid-template-columns: auto auto auto;
+    margin: auto;
+    gap: 1px 1px;
     width: 60vh; 
     border: 1px solid orange;
-    text-align: left;
+    text-align: center;
     align-items: center;
     border-radius: 5vh 0 0 0 ;
     background-color: azure;
+    padding-left: 1vh;
+    
 }
 
+h2{
+  font-family: 'Press Start 2P', sans-serif;
+}
+
+
+#timer_block #intentos #record_actual {
+  margin: auto;
+  border: 1vh;
+  height: inherit;
+}
+
+
+
 #records{
-    height: inherit;
+    display: grid;
+    grid-template-columns: auto auto auto;
     width: 20vh;
     border: 1px solid orange;
     text-align: right;
     border-radius: 0 5vh 0 0;
     background-color: azure;
+    padding-right: 1vh;
+    height: inherit;
+    justify-content: center;
+}
+
+#records_block{
+    margin-top: 1vh;
+    width: fit-content;
+    height: inherit;
 }
 
 
@@ -50,28 +157,122 @@ header{
 .child_main{
     border: 1px solid red;
     height: inherit;
-    width: 60vh;
+    width: 61.1vh;
     border-radius: 0 0 0 5vh;
     background-color: lavender;
+    justify-content: center;
 }
 
-.canvas{
+#canvas{
     border: 1px solid black;
     width: 40vh;
-    height: 40vh;
-    margin-left: 9vh;
+    height: 30vh;
+    margin-left: 10vh;
 }
 
-#button_new_game{
-    margin-top: 23vh;
-    margin-left: 24vh;
+
+#boton_juego_nuevo {
     position: absolute;
+    margin: auto;
+    margin-left: 22vh;
+    margin-top: 15vh;
+
+    background-color: #ffcc00;
+    color: #333;
+
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+
+    cursor: pointer;
+    font-family: 'Press Start 2P', sans-serif; /* Fuente retro */
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+   
+}
+
+#boton_juego_nuevo:hover {
+    background-color: #ffdd55;
+}
+
+
+#container_palabra_secreta{
+    width: auto;
+    height: 3vh;
+    margin: auto;
+    margin-top: 2vh;
+    text-align: center;
+}
+
+
+#palabra_secreta span{
+    font-size: 2em;
+    border-bottom: 4px solid #000;
+    width: 30px;
+    text-align: center;
+    margin-right: 6px;
+    display: inline-block;
 }
 
 .nav_main{
     border: 1px solid pink;
     height: inherit;
-    width: 20vh;
+    width: 20.9vh;
     border-radius: 0 0 5vh 0;
     background-color: floralwhite;
+}
+
+#botones_letras{
+    padding: 8px 16px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+    gap: 13px;
+    border-radius: 1vh;
+    background: linear-gradient(to bottom, #330779, #c510fc);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 50vh;
+}
+
+#botones_letras button{
+    font-size: xx-large;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    width: 5vh;
+}
+
+#botones_letras :hover{
+    background-color:lightgreen;
+}
+
+
+.fondo{
+    animation:slide 10s ease-in-out infinite alternate;
+    background-image: linear-gradient(-60deg, rgb(213, 8, 236) 50%, rgb(18, 26, 240) 50%);
+    bottom:0;
+    left:-50%;
+    opacity:.5;
+    position:fixed;
+    right:-50%;
+    top:0;
+    z-index:-1;
+}
+  
+.fondo2 {
+    animation-direction:alternate-reverse;
+    animation-duration:4s;
+}
+  
+.fondo3 {
+    animation-duration:5s;
+}
+
+@keyframes slide {
+    0% {
+      transform:translateX(-25%);
+    }
+    100% {
+      transform:translateX(25%);
+    }
 }
