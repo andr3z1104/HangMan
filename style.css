@@ -199,19 +199,20 @@ h2{
 #container_palabra_secreta{
     width: auto;
     height: 3vh;
-    margin: auto;
-    margin-top: 2vh;
     text-align: center;
+    margin-bottom: 20px;
 }
 
 
 #palabra_secreta span{
     font-size: 2em;
-    border-bottom: 4px solid #000;
+    border-bottom: 6px solid #000;
+    background-color: white;
     width: 30px;
     text-align: center;
     margin-right: 6px;
     display: inline-block;
+    margin-bottom: 10px;
 }
 
 .nav_main{
@@ -228,7 +229,7 @@ h2{
     flex-wrap: wrap;
     justify-content: center;
     margin: auto;
-    gap: 13px;
+    gap: 1px;
     border-radius: 1vh;
     background: linear-gradient(to bottom, #330779, #c510fc);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
