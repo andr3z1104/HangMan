@@ -19,6 +19,10 @@ var boton = document.getElementById("boton_juego_nuevo");
 boton.style.display = "none";
 }
 
+function mostrarBoton() { //no funcionaaaaaaaaaaaaaaaaaaaaa
+var boton = document.getElementById("boton_juego_nuevo");
+boton.style.display = 'inline';
+}
 
 function ocultarletra() {
   var letras = document.getElementsByClassName("botones_letras");
@@ -39,11 +43,17 @@ function NewGame(event){
   adivinar.innerHTML= '';
   num_errores = 0;
   num_aciertos = 0;
+  ocultarBoton();
 
   const len_palabras = palabras.length;
   const valor_palabra = palabraRandom(len_palabras);
   palabra = palabras[valor_palabra];
   const len_palabra = palabra.length;
+
+  for ( let i = 0; i < btn_letras.length ; i++){
+    btn_letras[i].disabled = false;
+  
+  }//abilitar otra vez las letras despues de otro juego
 
 
   console.log(palabra);
@@ -86,10 +96,19 @@ function click_letras(event){
 
   if(num_errores == 5){
     alert('Perdiste porque el personaje fue ahorcado! La palabra era-->' + palabra_comprueba);
+    jugar_de_nuevo();
   }else if(num_aciertos == palabra_comprueba.length){
     alert('Ganaste! el personaje sobrevivio al ahorcamiento. ');
+    jugar_de_nuevo();
   }
 
   console.log( 'la letra' + letra + "palabra" + palabra_comprueba + "existe?" + acerto );
 }
 
+function jugar_de_nuevo(){
+  for ( let i = 0; i < btn_letras.length ; i++){
+    btn_letras[i].disabled = true;
+  
+  }
+  mostrarBoton();
+}
