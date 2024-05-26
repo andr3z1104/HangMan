@@ -6,9 +6,13 @@ const boton_juego_nuevo = document.getElementById("boton_juego_nuevo");
 const juego_finalizado = document.getElementById("juego_finalizado");
 const canvas = document.getElementById("canvas");
 const resultado_final = document.getElementById("resultado_final");
-const timer = document.getElementById("timer")
+const timer = document.getElementById("timer");
 
 boton_juego_nuevo.addEventListener('click', NewGame);
+let num_errores = 0;
+let num_aciertos = 0;
+let palabra;
+
 
 const palabras = ['manzana', 'pera', 'banana', 'naranja', 'uva', 'sandía', 'kiwi', 'mango', 'fresa', 'piña'];
 
@@ -43,11 +47,14 @@ function reiniciarJuego() {
 function NewGame(event){
   const adivinar = document.getElementById("palabra_secreta");
   adivinar.innerHTML= '';
+  num_errores = 0;
+  num_aciertos = 0;
 
   const len_palabras = palabras.length;
   const valor_palabra = palabraRandom(len_palabras);
-  const palabra = palabras[valor_palabra]
+  palabra = palabras[valor_palabra];
   const len_palabra = palabra.length;
+
 
   console.log(palabra);
 
@@ -58,5 +65,35 @@ function NewGame(event){
 
 }
 
+const btn_letras = document.querySelectorAll('#botones_letras button');
 
+for ( let i = 0; i < btn_letras.length ; i++){
+  btn_letras[i].addEventListener('click', click_letras);
+
+}
+
+
+function click_letras(event){
+  const spans = document.querySelectorAll('#palabra_secreta span');
+  const button = event.target;
+  button.disabled = true;
+  const letra = button.innerHTML.toUpperCase();
+  const palabra_comprueba = palabra.toUpperCase();
+
+  let acerto = false;
+  for(let i = 0; i < palabra_comprueba.length; i++){
+    if(letra == palabra_comprueba[i]){
+      spans[i].innerHTML = letra;
+      acerto = true;
+      num_aciertos++;
+    }
+  }
+
+  if(acerto == false){
+    num_errores++;
+    //aqui van las imagenes con el canvas 50
+  }
+
+  console.log( 'la letra' + letra + "palabra" + palabra_comprueba + "existe?" + acerto );
+}
 
