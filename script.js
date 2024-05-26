@@ -5,6 +5,7 @@ boton_juego_nuevo.addEventListener('click', () =>{
 
 let num_errores = 0;
 let num_aciertos = 0;
+let puntaje = 0;
 let palabra;
 
 
@@ -54,9 +55,11 @@ function reiniciarJuego() {
 function NewGame(event){
   const adivinar = document.getElementById("palabra_secreta");
   adivinar.innerHTML= '';
+  puntaje = 0
   num_errores = 0;
   num_aciertos = 0;
   ocultarBoton();
+  cambiar_valor_puntos();
 
   const len_palabras = palabras.length;
   const valor_palabra = palabraRandom(len_palabras);
@@ -98,13 +101,22 @@ function click_letras(event){
     if(letra == palabra_comprueba[i]){
       spans[i].innerHTML = letra;
       acerto = true;
+      puntaje = puntaje + 50;
       num_aciertos++;
+      cambiar_valor_puntos();
     }
   }
 
   if(acerto == false){
     num_errores++;
+    if (puntaje > 0){
+      puntaje = puntaje - 50;
+    }else if(puntaje == 0){
+      puntaje = puntaje;
+    }
+
     ahorcado_trazo(num_errores);
+    cambiar_valor_puntos();
   }
 
   function ahorcado_trazo(num_errores){
@@ -195,9 +207,11 @@ function click_letras(event){
 
   if(num_errores == 8){
     alert('Perdiste porque el personaje fue ahorcado! La palabra era-->' + palabra_comprueba);
+    agregarUsuario();
     jugar_de_nuevo();
   }else if(num_aciertos == palabra_comprueba.length){
     alert('Ganaste! el personaje sobrevivio al ahorcamiento. ');
+    agregarUsuario();
     jugar_de_nuevo();
   }
 
@@ -217,4 +231,19 @@ window.onload = function(){
     btn_letras[i].disabled = true;
   }
 
+}
+
+function agregarUsuario() {
+  const nuevoUsuario = prompt("Ingresa el nombre del nuevo usuario:" + puntaje);
+  if (nuevoUsuario) {
+      const lista = document.getElementById("lista_usuarios");
+      const nuevoElemento = document.createElement("li");
+      nuevoElemento.textContent = nuevoUsuario;
+      lista.appendChild(nuevoElemento);
+  }
+}
+
+function cambiar_valor_puntos() {
+  const nuevo_record = document.getElementById('record_actual');
+  nuevo_record.innerText = puntaje;
 }
