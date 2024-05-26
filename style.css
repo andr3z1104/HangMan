@@ -92,13 +92,15 @@ header{
     grid-template-columns: auto auto auto;
     margin: auto;
     width: 80vh;
+    height: 10vh;
 }
 
 #timer{
     display: grid;
-    position: relative;
+    height: inherit;
     grid-template-columns: auto auto auto;
     margin: auto;
+    gap: 1px 1px;
     width: 60vh; 
     border: 1px solid orange;
     text-align: center;
@@ -106,6 +108,7 @@ header{
     border-radius: 5vh 0 0 0 ;
     background-color: azure;
     padding-left: 1vh;
+    
 }
 
 h2{
@@ -113,11 +116,12 @@ h2{
 }
 
 
-#timer_block #intentos #record_actual{
+#timer_block #intentos #record_actual {
   margin: auto;
-  width: fit-content;
   border: 1vh;
+  height: inherit;
 }
+
 
 
 #records{
@@ -129,12 +133,14 @@ h2{
     border-radius: 0 5vh 0 0;
     background-color: azure;
     padding-right: 1vh;
+    height: inherit;
+    justify-content: center;
 }
 
 #records_block{
-    margin: auto;
-    margin-left: 5vh;
+    margin-top: 1vh;
     width: fit-content;
+    height: inherit;
 }
 
 
@@ -168,7 +174,7 @@ h2{
 #boton_juego_nuevo {
     position: absolute;
     margin: auto;
-    margin-left: 23vh;
+    margin-left: 22vh;
     margin-top: 15vh;
 
     background-color: #ffcc00;

@@ -1,6 +1,8 @@
 boton_juego_nuevo.addEventListener('click', () =>{
   NewGame();
   limpiarCanva();
+  resetTimer();
+  run();
 });
 
 let num_errores = 0;
@@ -8,9 +10,30 @@ let num_aciertos = 0;
 let puntaje = 0;
 let palabra_acertada = 0; //recordarrrrrrr
 let palabra;
+let intervalId;
+let start_tiempo = 0;
+let current_tiempo = 0;
+let elapsed_tiempo = 0;
+let hrs = 0;
+let mins = 0;
+let secs = 0;
+const timer = document.getElementById('timer_block');
+timer.style.fontFamily = 'Helvetica'; 
+timer.style.fontWeight = 'Bold';
+timer.style.fontSize = '20px';
 
 
-const palabras = ['manzana', 'pera', 'banana', 'naranja', 'uva', 'sandia', 'kiwi', 'mango', 'fresa', 'piña'];
+const palabras =  [
+  'manzana', 'pera', 'banana', 'naranja', 'uva', 'sandia', 'kiwi', 'mango', 'fresa', 'piña',
+  'aguacate', 'albaricoque', 'cereza', 'ciruela', 'coco', 'durazno', 'frambuesa', 'granada',
+  'higo', 'lima', 'limon', 'trigo', 'mandarina', 'maracuya', 'melocoton', 'melon', 'moras',
+  'papaya', 'pomelo', 'zarzamora', 'arandano', 'caqui', 'carambola', 'chirimoya', 'lechuga',
+  'guanabana', 'guayaba', 'pepino', 'tomate', 'cebolla', 'ajo', 'zanahoria', 'brocoli', 'espinaca', 'col', 'pimiento', 'berenjena',
+  'calabaza', 'remolacha', 'alcachofa', 'esparrago', 'apio', 'champiñon', 'lentejas', 'garbanzo',
+  'arroz', 'pasta', 'queso', 'pollo', 'res', 'cerdo', 'pescado', 'camaron', 'langosta', 'cangrejo',
+  'mejillon', 'ostra', 'calamar', 'pulpo', 'sardina', 'atun', 'salmon', 'trucha', 'bacalao', 'merluza'
+];
+
 
 const canvas = document.getElementById('canvas');
 const canva = canvas.getContext('2d');
@@ -226,7 +249,7 @@ function jugar_de_nuevo(){
     btn_letras[i].disabled = true;
   }
   mostrarBoton();
-  
+  stopTimer();
 }
 
 window.onload = function(){
@@ -241,7 +264,7 @@ function agregarUsuario() {
   if (nuevoUsuario) {
       const lista = document.getElementById("lista_usuarios");
       const nuevoElemento = document.createElement("li");
-      nuevoElemento.textContent = nuevoUsuario + ' --> ' + puntaje + " puntos";
+      nuevoElemento.textContent = nuevoUsuario + '->' + puntaje + " puntos " + palabra_acertada + " palabras acertadas " + hrs+':'+ mins+':'+secs + ' tiempo';
       lista.appendChild(nuevoElemento);
   }
 }
@@ -249,11 +272,17 @@ function agregarUsuario() {
 function cambiar_valor_puntos() {
   const nuevo_record = document.getElementById('record_actual');
   nuevo_record.innerText = puntaje;
+  nuevo_record.style.fontFamily = 'Helvetica'; 
+  nuevo_record.style.fontWeight = 'Bold';
+  nuevo_record.style.fontSize = '20px';
 }
 
 function palabras_acertadas() {
   const numero_palabras_acertadas = document.getElementById('intentos');
   numero_palabras_acertadas.innerText = palabra_acertada;
+  numero_palabras_acertadas.style.fontFamily = 'Helvetica'; 
+  numero_palabras_acertadas.style.fontWeight = 'Bold';
+  numero_palabras_acertadas.style.fontSize = '20px';
 }//recordarrrrrrrrrrrr
 
 
@@ -273,7 +302,7 @@ function nextlevel(){
   for ( let i = 0; i < btn_letras.length ; i++){
     btn_letras[i].disabled = false;
   
-  }//abilitar otra vez las letras despues de otro juego
+  }//habilitar otra vez las letras despues de otro juego
 
 
   console.log(palabra);
@@ -286,17 +315,48 @@ function nextlevel(){
 }
 
 
-
-var timerInterval;
-
-function startTimer() {
-  timerInterval = setInterval(updateTimer, 1000); // Actualiza el temporizador cada segundo
+function run(){
+  start_tiempo = Date.now() -elapsed_tiempo;
+  intervalId = setInterval(updateTimer, 75);
 }
 
-function updateTimer() {
-  var currentTime = Date.now();
-  var elapsedTime = Math.floor((currentTime - startTime) / 1000); // Calcula el tiempo transcurrido en segundos
-  console.log("Tiempo transcurrido: " + elapsedTime + " segundos");
+
+function updateTimer(){
+  elapsed_tiempo = Date.now() - start_tiempo;
+
+  secs = Math.floor((elapsed_tiempo / 1000) % 60);
+  mins = Math.floor((elapsed_tiempo / (1000*60)) % 60);
+  hrs = Math.floor((elapsed_tiempo / (1000*60*60)) % 60);
+
+
+
+  secs = pad(secs);
+  mins = pad(mins);
+  hrs = pad(hrs);
+
+  timer.innerHTML = `${hrs}:${mins}:${secs}`;
+  
+
+  function pad(unit){
+    return (("0") +unit).length > 2 ? unit: "0" +unit;
+  }
+
+
 }
 
-startTimer(); // Inicia el temporizador
+function resetTimer(){
+  clearInterval(intervalId);
+    start_tiempo = 0;
+     elapsed_tiempo = 0;
+     current_tiempo = 0;
+     hrs = 0;
+     mins = 0;
+     secs = 0;
+    timer.textContent = "00:00:00"
+  
+}
+
+function stopTimer(){
+  elapsed_tiempo = Date.now() - start_tiempo;
+  clearInterval(intervalId);
+}
