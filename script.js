@@ -19,7 +19,7 @@ var boton = document.getElementById("boton_juego_nuevo");
 boton.style.display = "none";
 }
 
-function mostrarBoton() { //no funcionaaaaaaaaaaaaaaaaaaaaa
+function mostrarBoton() { 
 var boton = document.getElementById("boton_juego_nuevo");
 boton.style.display = 'inline';
 }
