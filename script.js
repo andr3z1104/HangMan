@@ -94,6 +94,12 @@ function click_letras(event){
     //aqui van las imagenes con el canvas 50
   }
 
+  if(num_errores == 5){
+    alert('Perdiste porque el personaje fue ahorcado! La palabra era-->' + palabra_comprueba);
+  }else if(num_aciertos == palabra_comprueba.length){
+    alert('Ganaste! el personaje sobrevivio al ahorcamiento. ');
+  }
+
   console.log( 'la letra' + letra + "palabra" + palabra_comprueba + "existe?" + acerto );
 }
 
