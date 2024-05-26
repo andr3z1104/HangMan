@@ -1,13 +1,3 @@
-
-const letra = document.getElementById("contenerdor-letras");
-const opciones_juegos = document.getElementById("opciones_juegos");
-const input_usuario = document.getElementById("input_usuario");
-const boton_juego_nuevo = document.getElementById("boton_juego_nuevo");
-const juego_finalizado = document.getElementById("juego_finalizado");
-const canvas = document.getElementById("canvas");
-const resultado_final = document.getElementById("resultado_final");
-const timer = document.getElementById("timer");
-
 boton_juego_nuevo.addEventListener('click', NewGame);
 let num_errores = 0;
 let num_aciertos = 0;
